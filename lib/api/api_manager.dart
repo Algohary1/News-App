@@ -18,4 +18,16 @@ Map<String, dynamic>jsonFormat=jsonDecode(response.body);
 SourceResponse sourceResponse=SourceResponse.fromJson(jsonFormat);
 return sourceResponse;
  }
+
+ getNewsData(String sourceId)async{
+
+  //https://newsapi.org/v2/everything?q=bitcoin&apiKey=24b1bb2c6923406684c8bad042d861e2
+
+Uri url = Uri.https('newsapi.org','/v2/everything',
+{
+  'apiKey':'24b1bb2c6923406684c8bad042d861e2',
+  'sources':sourceId,
+}
+);
+ }
 }

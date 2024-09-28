@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 
       initialRoute: Home.routeName,
       routes:{
-        Home.routeName: (context)=> const Home(),
+        Home.routeName: (context)=>  Home(),
       },
     );
   }
