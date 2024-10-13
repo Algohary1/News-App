@@ -4,7 +4,8 @@ import 'package:news_app/Screens/tab_item.dart';
 import 'package:news_app/api/Api_Manager.dart';
 
 class TabBarWidget extends StatefulWidget {
-  const TabBarWidget({super.key});
+  String id;
+   TabBarWidget({required this.id,super.key});
 
   @override
   State<TabBarWidget> createState() => _TabBarWidgetState();
@@ -16,7 +17,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: ApiManager.getSources(),
+        future: ApiManager.getSources(widget.id),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(

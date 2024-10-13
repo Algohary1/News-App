@@ -10,8 +10,10 @@ class ApiManager {
 //https://newsapi.org/v2/top-headlines/sources?apiKey=24b1bb2c6923406684c8bad042d861e2
 
 
-static Future <SourceResponse> getSources()async{
-Uri url=Uri.https('newsapi.org','/v2/top-headlines/sources',{ 'apiKey':'24b1bb2c6923406684c8bad042d861e2'}
+static Future <SourceResponse> getSources(String id)async{
+Uri url=Uri.https('newsapi.org','/v2/top-headlines/sources',{ 'apiKey':'24b1bb2c6923406684c8bad042d861e2',
+'category':id
+}
 );
 http.Response response = await http.get(url);
 Map<String, dynamic>jsonFormat=jsonDecode(response.body);

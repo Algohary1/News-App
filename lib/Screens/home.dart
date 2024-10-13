@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/Screens/categories.dart';
+import 'package:news_app/Screens/drawer_tab.dart';
 import 'package:news_app/Screens/tab_bar.dart';
 import 'package:news_app/Screens/tab_item.dart';
 import 'package:news_app/api/Api_Manager.dart';
+import 'package:news_app/models/categoryModel.dart';
 
 class Home extends StatefulWidget {
   static const String routeName = 'Home';
@@ -25,7 +27,7 @@ class _HomeState extends State<Home> {
         child: DefaultTabController(
             length: 60,
             child: Scaffold(
-              drawer: const Drawer(),
+              drawer: DrawerTab(onCLick: onDrawerClick,),
               backgroundColor: Colors.transparent,
               appBar: AppBar(
                 centerTitle: true,
@@ -52,7 +54,26 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              body: CategoriesTab(),
+              body: selectedCategory==null? CategoriesTab(onClick: onCategorySelect,): TabBarWidget(id: selectedCategory!.id,),
             )));
+  }
+
+  CategoryModel? selectedCategory=null;
+onDrawerClick(id){
+  if(id==DrawerTab.CATEGORY_ID) {
+    selectedCategory = null;
+    Navigator.pop(context);
+  }else if(id==DrawerTab.SETTINGS_ID){
+
+  }
+  setState(() {
+
+  });
+}
+  onCategorySelect(cat){
+
+    selectedCategory = cat;
+    setState(() {});
+
   }
 }
