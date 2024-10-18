@@ -38,6 +38,9 @@ dependencies:
   flutter_native_splash: ^2.4.1
   http: ^1.2.2
   cached_network_image: ^3.4.1
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
+  loader_overlay: ^4.0.3
 
 dev_dependencies:
   flutter_test:

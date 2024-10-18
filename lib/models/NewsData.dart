@@ -1,14 +1,24 @@
-import 'package:news_app/SourceResponse.dart';
+import 'package:news_app/models/SourceResponse.dart';
 
 class NewsDataResponse {
   String? status;
+  String? code;
+  String? message;
   int? totalResults;
   List<Articles>? articles;
 
-  NewsDataResponse({this.status, this.totalResults, this.articles});
+  NewsDataResponse({
+    this.status,
+    this.totalResults,
+    this.articles,
+    this.code,
+    this.message,
+  });
 
   NewsDataResponse.fromJson(Map<String, dynamic> json) {
     status = json['status'];
+    code = json['code'];
+    message = json['message'];
     totalResults = json['totalResults'];
     if (json['articles'] != null) {
       articles = <Articles>[];
