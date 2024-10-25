@@ -6,6 +6,8 @@ import 'package:news_app/Screens/tab_item.dart';
 import 'package:news_app/api/Api_Manager.dart';
 import 'package:news_app/bloc/cubit.dart';
 import 'package:news_app/bloc/states.dart';
+import 'package:news_app/main.dart';
+import 'package:news_app/repo/home_local_repo_impl.dart';
 import 'package:news_app/repo/home_remote_repo_impl.dart';
 
 class TabBarWidget extends StatelessWidget {
@@ -18,7 +20,7 @@ class TabBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return LoaderOverlay(
       child: BlocProvider(
-        create: (context) => HomeCubit(HomeRemoteRepoImpl())..getSources(id),
+        create: (context) => HomeCubit(!hasInternet?  HomeRemoteRepoImpl(): HomeLocalRepoImpl())..getSources(id),
         child: BlocConsumer<HomeCubit, HomeStates>(
           listener: (context, state) {
             if (state is HomeGetSourcesLoadingState||state is HomeGetNewsDataLoadingState){
